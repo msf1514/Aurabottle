@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Bottle | The Smart Self-Cleaning Water Bottle</title>
+  
+  <!-- Tailwind CSS Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts Connection -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              200: '#e2e8f0',
+              300: '#cbd5e1',
+              400: '#94a3b8',
+              500: '#2563eb',
+              600: '#1d4ed8',
+              700: '#1e40af',
+              800: '#1e3a8a',
+              900: '#0f172a',
+              DEFAULT: '#2563eb'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    /* Premium custom scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    
+    /* Fine-tune layout animations and interactive elements */
+    .color-dot-active {
+      box-shadow: 0 0 0 2px white, 0 0 0 4px #2563eb;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased">
+
+  <!-- Promo Top Banner -->
+  <div class="bg-slate-900 text-slate-100 text-xs font-semibold py-2.5 px-4 text-center tracking-wider border-b border-slate-800">
+    <span class="inline-flex items-center gap-1.5 font-mono">
+      <span class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
+      FATHER’S DAY SPECIAL: GET FREE EXPRESS SHIPPING ON ALL ORDERS TODAY!
+    </span>
+  </div>
+
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logo Branding -->
+        <a href="#" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 bg-slate-900 rounded-lg flex items-center justify-center text-white border border-slate-800 shadow-sm group-hover:bg-blue-600 transition-all duration-250">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-none stroke-current stroke-[2.5]" viewBox="0 0 24 24">
+              <path d="M12 22a7 7 0 0 0 7-7c0-4.3-7-11-7-11S5 10.7 5 15a7 7 0 0 0 7 7z"/>
+            </svg>
+          </div>
+          <span class="font-display font-extrabold text-lg tracking-tighter text-slate-900">AURA<span class="text-blue-600">BOTTLE</span></span>
+        </a>
+
+        <!-- Desktop Navigation Items -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#benefits" class="text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-slate-900 transition-colors">Benefits</a>
+          <a href="#how-it-works" class="text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-slate-900 transition-colors">Process</a>
+          <a href="#testimonials" class="text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-slate-900 transition-colors">Testimonial</a>
+          <a href="#pricing" class="text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-slate-900 transition-colors">Pricing</a>
+          <a href="#faq" class="text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-slate-900 transition-colors">FAQ</a>
+        </nav>
+
+        <!-- Navigation Call-to-Action -->
+        <div class="hidden md:flex items-center gap-4">
+          <a href="#pricing" class="px-5 py-2.5 bg-slate-900 text-white text-[11px] font-extrabold tracking-wider rounded-full hover:bg-slate-800 transition-all duration-200 uppercase" data-slot="nav-cta">
+            Get Aura Bottle
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none" aria-label="Toggle menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-dropdown" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 flex flex-col gap-4 shadow-inner">
+      <a href="#benefits" class="text-xs font-bold uppercase tracking-wider text-slate-500 px-2 py-1.5 hover:text-slate-900 transition-colors">Benefits</a>
+      <a href="#how-it-works" class="text-xs font-bold uppercase tracking-wider text-slate-500 px-2 py-1.5 hover:text-slate-900 transition-colors">Process</a>
+      <a href="#testimonials" class="text-xs font-bold uppercase tracking-wider text-slate-500 px-2 py-1.5 hover:text-slate-900 transition-colors">Testimonial</a>
+      <a href="#pricing" class="text-xs font-bold uppercase tracking-wider text-slate-500 px-2 py-1.5 hover:text-slate-900 transition-colors">Pricing</a>
+      <a href="#faq" class="text-xs font-bold uppercase tracking-wider text-slate-500 px-2 py-1.5 hover:text-slate-900 transition-colors">FAQ</a>
+      <hr class="border-slate-100 my-1">
+      <a href="#pricing" class="inline-flex items-center justify-center bg-slate-900 text-white font-extrabold text-xs py-3.5 px-6 rounded-full transition-all uppercase tracking-wider" data-slot="nav-cta">
+        Get Aura Bottle
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden py-16 sm:py-24 bg-white border-b border-slate-200">
+    
+    <!-- Geometric grid/radial background pattern of styling -->
+    <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"></div>
+    <!-- Clean geometric slate separator shapes -->
+    <div class="absolute top-0 right-0 w-[42%] h-full bg-slate-50 border-l border-slate-200 -z-10 hidden lg:block"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Hero Text Elements -->
+        <div class="lg:col-span-7 flex flex-col items-start space-y-6">
+          
+          <span class="text-[10px] font-extrabold tracking-[0.2em] text-blue-600 uppercase" data-slot="hero-eyebrow">
+            Meet the next generation of hydration
+          </span>
+          
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tighter text-slate-900" data-slot="headline">
+            The smart self-cleaning water bottle that purifies itself.
+          </h1>
+          
+          <p class="text-slate-500 text-sm sm:text-base max-w-xl leading-relaxed" data-slot="subheadline">
+            Using built-in UV-C light, Aura Bottle eliminates 99.9% of bio-contaminants in just 60 seconds.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto pt-2">
+            <a href="#pricing" class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs py-3.5 px-6 rounded-lg uppercase tracking-wider transition-all duration-200" data-slot="cta-primary">
+              Order Yours Now
+            </a>
+            <a href="#how-it-works" class="inline-flex items-center justify-center bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 font-bold text-xs py-3.5 px-6 rounded-lg uppercase tracking-wider transition-all duration-200" data-slot="cta-secondary">
+              Explore Pure Tech
+            </a>
+          </div>
+ 
+          <!-- Trust & Social Proof Row -->
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-6 mt-4 border-t border-slate-200 w-full lg:max-w-xl">
+            <!-- Avatars Grid -->
+            <div class="flex -space-x-3">
+              <img class="w-9 h-9 rounded-full border-2 border-white object-cover shadow-sm" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&h=150&q=80" alt="Customer Profile">
+              <img class="w-9 h-9 rounded-full border-2 border-white object-cover shadow-sm" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80" alt="Customer Profile">
+              <img class="w-9 h-9 rounded-full border-2 border-white object-cover shadow-sm" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&h=150&q=80" alt="Customer Profile">
+              <img class="w-9 h-9 rounded-full border-2 border-white object-cover shadow-sm" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80" alt="Customer Profile">
+            </div>
+            
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+              <div class="flex items-center gap-1.5 bg-amber-50 border border-amber-200/75 rounded px-2.5 py-0.5 text-amber-700 text-xs font-bold font-mono">
+                ★ <span data-slot="social-proof-number">4.9/5</span>
+              </div>
+              <span class="text-[10px] text-slate-400 uppercase tracking-widest font-bold" data-slot="social-proof-label">from over 12,000 satisfied customers</span>
+            </div>
+          </div>
+        </div>
+ 
+        <!-- Hero Graphic Container -->
+        <div class="lg:col-span-5 flex justify-center lg:justify-end">
+          <div class="relative w-full max-w-[420px] aspect-[4/5] bg-white rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8 flex flex-col justify-between overflow-hidden">
+            <!-- Radial dots pattern background layer of the product showcase box -->
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"></div>
+            
+            <!-- Floating Spec Badge -->
+            <div class="absolute top-6 left-6 bg-slate-900 border border-slate-800 text-white shadow-lg rounded-full py-1.5 px-3.5 flex items-center gap-2 z-10">
+              <span class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
+              <span class="text-[9px] font-bold text-slate-300 uppercase tracking-widest font-mono">Self-Sanitizing Lid</span>
+            </div>
+
+            <!-- Main Product Image with Interactive Color Selector State -->
+            <div class="w-full flex-grow flex items-center justify-center min-h-[300px]">
+              <div class="relative h-64 w-64 flex items-center justify-center">
+                
+                <!-- Obsidian Black Bottle (default, shown) -->
+                <div id="bottle-obsidian" class="absolute inset-0 transition-all duration-300 transform scale-100 opacity-100">
+                  <svg viewBox="0 0 100 200" class="w-full h-full drop-shadow-2xl">
+                    <defs>
+                      <linearGradient id="obsidianGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#1e293b"/>
+                        <stop offset="60%" stop-color="#0f172a"/>
+                        <stop offset="100%" stop-color="#020617"/>
+                      </linearGradient>
+                      <linearGradient id="bronzeLid" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#d97706"/>
+                        <stop offset="100%" stop-color="#92400e"/>
+                      </linearGradient>
+                    </defs>
+                    <!-- Cap -->
+                    <rect x="36" y="22" width="28" height="14" rx="4" fill="url(#bronzeLid)"/>
+                    <rect x="38" y="16" width="24" height="6" rx="2" fill="#0f172a"/>
+                    <!-- Neck -->
+                    <path d="M34 36h32v12H34z" fill="#334155"/>
+                    <path d="M30 48C30 48 32 60 22 75c-5 7.5-6 15-6 25v70c0 10 8 14 14 14h40c6 0 14-4 14-14v-70c0-10-1-17.5-6-25C68 60 70 48 70 48H30z" fill="url(#obsidianGrad)"/>
+                    <!-- Subtle Highlight -->
+                    <path d="M22 75c-2.5 3.75-4 8.75-4 15v70c0 2 1 4 2.5 5.5V75.5z" fill="#ffffff" fill-opacity="0.08"/>
+                    <!-- Smart Ring -->
+                    <ellipse cx="50" cy="19" rx="8" ry="2.5" fill="#38bdf8" class="animate-pulse"/>
+                  </svg>
+                </div>
+
+                <!-- Aurora Teal Bottle (hidden) -->
+                <div id="bottle-teal" class="absolute inset-0 transition-all duration-300 transform scale-95 opacity-0 pointer-events-none">
+                  <svg viewBox="0 0 100 200" class="w-full h-full drop-shadow-2xl">
+                    <defs>
+                      <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#14b8a6"/>
+                        <stop offset="50%" stop-color="#0f766e"/>
+                        <stop offset="100%" stop-color="#115e59"/>
+                      </linearGradient>
+                    </defs>
+                    <rect x="36" y="22" width="28" height="14" rx="4" fill="#334155"/>
+                    <rect x="38" y="16" width="24" height="6" rx="2" fill="#0f172a"/>
+                    <path d="M34 36h32v12H34z" fill="#475569"/>
+                    <path d="M30 48C30 48 32 60 22 75c-5 7.5-6 15-6 25v70c0 10 8 14 14 14h40c6 0 14-4 14-14v-70c0-10-1-17.5-6-25C68 60 70 48 70 48H30z" fill="url(#tealGrad)"/>
+                    <path d="M22 75c-2.5 3.75-4 8.75-4 15v70c0 2 1 4 2.5 5.5V75.5z" fill="#ffffff" fill-opacity="0.12"/>
+                    <ellipse cx="50" cy="19" rx="8" ry="2.5" fill="#38bdf8" class="animate-pulse"/>
+                  </svg>
+                </div>
+
+                <!-- Arctic White Bottle (hidden) -->
+                <div id="bottle-white" class="absolute inset-0 transition-all duration-300 transform scale-95 opacity-0 pointer-events-none">
+                  <svg viewBox="0 0 100 200" class="w-full h-full drop-shadow-2xl">
+                    <defs>
+                      <linearGradient id="whiteGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ffffff"/>
+                        <stop offset="60%" stop-color="#f1f5f9"/>
+                        <stop offset="100%" stop-color="#cbd5e1"/>
+                      </linearGradient>
+                    </defs>
+                    <rect x="36" y="22" width="28" height="14" rx="4" fill="#64748b"/>
+                    <rect x="38" y="16" width="24" height="6" rx="2" fill="#334155"/>
+                    <path d="M34 36h32v12H34z" fill="#94a3b8"/>
+                    <path d="M30 48C30 48 32 60 22 75c-5 7.5-6 15-6 25v70c0 10 8 14 14 14h40c6 0 14-4 14-14v-70c0-10-1-17.5-6-25C68 60 70 48 70 48H30z" fill="url(#whiteGrad)"/>
+                    <path d="M22 75c-2.5 3.75-4 8.75-4 15v70c0 2 1 4 2.5 5.5V75.5z" fill="#ffffff" fill-opacity="0.4"/>
+                    <ellipse cx="50" cy="19" rx="8" ry="2.5" fill="#38bdf8" class="animate-pulse"/>
+                  </svg>
+                </div>
+
+                <!-- Terracotta Clay Bottle (hidden) -->
+                <div id="bottle-clay" class="absolute inset-0 transition-all duration-300 transform scale-95 opacity-0 pointer-events-none">
+                  <svg viewBox="0 0 100 200" class="w-full h-full drop-shadow-2xl">
+                    <defs>
+                      <linearGradient id="clayGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#f06a49"/>
+                        <stop offset="60%" stop-color="#c2410c"/>
+                        <stop offset="100%" stop-color="#9a3412"/>
+                      </linearGradient>
+                    </defs>
+                    <rect x="36" y="22" width="28" height="14" rx="4" fill="#582f25"/>
+                    <rect x="38" y="16" width="24" height="6" rx="2" fill="#2d130d"/>
+                    <path d="M34 36h32v12H34z" fill="#8c4f40"/>
+                    <path d="M30 48C30 48 32 60 22 75c-5 7.5-6 15-6 25v70c0 10 8 14 14 14h40c6 0 14-4 14-14v-70c0-10-1-17.5-6-25C68 60 70 48 70 48H30z" fill="url(#clayGrad)"/>
+                    <path d="M22 75c-2.5 3.75-4 8.75-4 15v70c0 2 1 4 2.5 5.5V75.5z" fill="#ffffff" fill-opacity="0.12"/>
+                    <ellipse cx="50" cy="19" rx="8" ry="2.5" fill="#38bdf8" class="animate-pulse"/>
+                  </svg>
+                </div>
+                
+              </div>
+            </div>
+
+            <!-- Intersecting Color Swatches (Easy customization click helper) -->
+            <div class="flex items-center justify-between mt-4 bg-white border border-slate-200 rounded-xl p-3.5 z-10 relative">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Choose Finish:</span>
+              <div class="flex gap-3.5">
+                <button onclick="switchColor('obsidian')" class="w-9 h-9 rounded-full bg-slate-900 border border-slate-400 focus:outline-none color-dot-active hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer" id="btn-obsidian" title="Obsidian Black"></button>
+                <button onclick="switchColor('teal')" class="w-9 h-9 rounded-full bg-teal-600 border border-teal-400 focus:outline-none hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer" id="btn-teal" title="Aurora Teal"></button>
+                <button onclick="switchColor('white')" class="w-9 h-9 rounded-full bg-white border border-slate-350 focus:outline-none hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer" id="btn-white" title="Arctic White"></button>
+                <button onclick="switchColor('clay')" class="w-9 h-9 rounded-full bg-orange-700 border border-orange-500 focus:outline-none hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer" id="btn-clay" title="Terracotta Clay"></button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Propositions / Product Showcase Section -->
+  <section class="py-20 bg-white border-b border-slate-200" id="benefits">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <h2 class="text-[10px] font-extrabold text-blue-600 uppercase tracking-[0.2em]">Why Aura Bottle?</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tighter">Pure hydration. Clean conscience.</p>
+        <p class="text-slate-500 text-sm sm:text-base">Standard reusable bottles gather odor and mold. Aura Bottle eliminates germs instantly at the press of a button, keeping your beverage entirely fresh all day.</p>
+      </div>
+
+      <!-- Part 1: High Fidelity Stat Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-slate-200 rounded-xl overflow-hidden mb-16 shadow-xs">
+        
+        <div class="bg-white border-b md:border-b-0 md:border-r border-slate-200 p-8 flex flex-col items-center text-center space-y-3 hover:bg-slate-50/55 transition-colors">
+          <span class="text-4xl sm:text-5xl font-black text-slate-900 tracking-tighter" data-slot="stat-1-number">99.9%</span>
+          <span class="text-[10px] font-bold text-blue-600 uppercase tracking-[0.2em]" data-slot="stat-1-label">Bacteria Eliminated</span>
+        </div>
+        
+        <div class="bg-white border-b md:border-b-0 md:border-r border-slate-200 p-8 flex flex-col items-center text-center space-y-3 hover:bg-slate-50/55 transition-colors">
+          <span class="text-4xl sm:text-5xl font-black text-slate-900 tracking-tighter" data-slot="stat-2-number">24 Hours</span>
+          <span class="text-[10px] font-bold text-blue-600 uppercase tracking-[0.2em]" data-slot="stat-2-label">Cold & Hot Insulation</span>
+        </div>
+        
+        <div class="bg-white p-8 flex flex-col items-center text-center space-y-3 hover:bg-slate-50/55 transition-colors">
+          <span class="text-4xl sm:text-5xl font-black text-slate-900 tracking-tighter" data-slot="stat-3-number">500k+</span>
+          <span class="text-[10px] font-bold text-blue-600 uppercase tracking-[0.2em]" data-slot="stat-3-label">Plastic Bottles Saved</span>
+        </div>
+        
+      </div>
+
+      <!-- Part 2: Feature Matrix (4 Core Benefits) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs">
+        
+        <!-- Benefit Card 1 -->
+        <div class="flex gap-5 p-6 bg-white border-b md:border-r border-slate-200 hover:bg-slate-50/40 transition-colors duration-250">
+          <div class="w-10 h-10 bg-slate-50 text-blue-600 border border-slate-200 rounded-lg flex items-center justify-center shrink-0">
+            <!-- Sparkles SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l-1.813-5.096L2.091 14.09l5.096-.813L9 8.182l1.813 5.096 5.096.813-5.096 1.813zM21 3.182l-1.125 3.125-3.125 1.125 3.125 1.125L21 11.818l1.125-3.125 3.125-1.125-3.125-1.125L21 3.182z" />
+            </svg>
+          </div>
+          <div class="space-y-1.5 p-0.5">
+            <h3 class="text-sm font-bold text-slate-900 font-display uppercase tracking-wider" data-slot="benefit-1-title">Pure Water, Anywhere</h3>
+            <p class="text-xs text-slate-500 leading-relaxed" data-slot="benefit-1-desc">Activate the UV-C LED cleaning cycle with a single tap of your finger. Drink clean water on the go.</p>
+          </div>
+        </div>
+
+        <!-- Benefit Card 2 -->
+        <div class="flex gap-5 p-6 bg-white border-b border-slate-200 hover:bg-slate-50/40 transition-colors duration-250">
+          <div class="w-10 h-10 bg-slate-50 text-blue-600 border border-slate-200 rounded-lg flex items-center justify-center shrink-0">
+            <!-- Thermometer SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 4v10.54a4 4 0 11-4 0V4a2 2 0 114 0z" />
+            </svg>
+          </div>
+          <div class="space-y-1.5 p-0.5">
+            <h3 class="text-sm font-bold text-slate-900 font-display uppercase tracking-wider" data-slot="benefit-2-title">Double-Wall Insulation</h3>
+            <p class="text-xs text-slate-500 leading-relaxed" data-slot="benefit-2-desc">Keeps your beverages icy-cold for up to 24 hours or steaming hot for up to 12 hours.</p>
+          </div>
+        </div>
+
+        <!-- Benefit Card 3 -->
+        <div class="flex gap-5 p-6 bg-white border-b md:border-b-0 md:border-r border-slate-200 hover:bg-slate-50/40 transition-colors duration-250">
+          <div class="w-10 h-10 bg-slate-50 text-blue-600 border border-slate-200 rounded-lg flex items-center justify-center shrink-0">
+            <!-- Lightning SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <div class="space-y-1.5 p-0.5">
+            <h3 class="text-sm font-bold text-slate-900 font-display uppercase tracking-wider" data-slot="benefit-3-title">Long-Lasting Power</h3>
+            <p class="text-xs text-slate-500 leading-relaxed" data-slot="benefit-3-desc">A single charge via magnetic USB-C keeps your bottle powered for up to 30 days of standard use.</p>
+          </div>
+        </div>
+
+        <!-- Benefit Card 4 -->
+        <div class="flex gap-5 p-6 bg-white hover:bg-slate-50/40 transition-colors duration-250">
+          <div class="w-10 h-10 bg-slate-50 text-blue-600 border border-slate-200 rounded-lg flex items-center justify-center shrink-0">
+            <!-- Globe/Eco SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5a3 3 0 003-3V6.7m-2 9l-3-3m0 0l-3 3m3-3V21m-9-9a9 9 0 1118 0 9 9 0 01-18 0z" />
+            </svg>
+          </div>
+          <div class="space-y-1.5 p-0.5">
+            <h3 class="text-sm font-bold text-slate-900 font-display" data-slot="benefit-4-title">Sustainable Design</h3>
+            <p class="text-xs text-slate-500 leading-relaxed" data-slot="benefit-4-desc">Designed with food-grade stainless steel to replace single-use plastics and protect the planet.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="py-20 bg-slate-50 relative overflow-hidden border-b border-slate-200" id="how-it-works">
+    
+    <!-- Geometric radial background dots pattern -->
+    <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Heading -->
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+        <h2 class="text-[10px] font-extrabold text-blue-600 uppercase tracking-[0.2em]">Process</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tighter">Three steps to pure freshness</p>
+        <p class="text-slate-500 text-sm sm:text-base">Pure water is simple with our smart purification ecosystem built right inside the lid.</p>
+      </div>
+
+      <!-- Steps Timeline Cards -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-0 border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs relative z-10">
+        
+        <!-- Step 1 -->
+        <div class="bg-white p-8 flex flex-col space-y-6 relative border-b lg:border-b-0 lg:border-r border-slate-200 hover:bg-slate-50/40 transition-colors duration-250">
+          <!-- Step Badge Number -->
+          <span class="absolute top-8 right-8 text-5xl font-extrabold text-slate-100 font-mono">01</span>
+          <div class="w-12 h-12 bg-slate-50 text-blue-600 border border-slate-200 rounded-lg flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v13m0 0l-4-4m4 4l4-4M5 19h14" />
+            </svg>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-base font-bold text-slate-900 uppercase tracking-wide" data-slot="step-1-title">Fill Your Bottle</h3>
+            <p class="text-xs text-slate-500 leading-relaxed" data-slot="step-1-desc">Fill Aura Bottle from any municipal tap or water fountain. The stainless steel keeps it pristine.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-white p-8 flex flex-col space-y-6 relative border-b lg:border-b-0 lg:border-r border-slate-200 hover:bg-slate-50/40 transition-colors duration-250">
+          <!-- Step Badge Number -->
+          <span class="absolute top-8 right-8 text-5xl font-extrabold text-slate-100 font-mono">02</span>
+          <div class="w-12 h-12 bg-slate-50 text-blue-600 border border-slate-200 rounded-lg flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+            </svg>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-base font-bold text-slate-900 uppercase tracking-wide" data-slot="step-2-title">Tap the Cap</h3>
+            <p class="text-xs text-slate-500 leading-relaxed" data-slot="step-2-desc">Double-tap the smart lid to activate the 280nm UV-C sanitizing light to purify your water.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-white p-8 flex flex-col space-y-6 relative border-0 hover:bg-slate-50/40 transition-colors duration-250">
+          <!-- Step Badge Number -->
+          <span class="absolute top-8 right-8 text-5xl font-extrabold text-slate-100 font-mono">03</span>
+          <div class="w-12 h-12 bg-slate-50 text-blue-600 border border-slate-200 rounded-lg flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-base font-bold text-slate-900 uppercase tracking-wide" data-slot="step-3-title">Stay Refreshed</h3>
+            <p class="text-xs text-slate-500 leading-relaxed" data-slot="step-3-desc">Within 60 seconds, enjoy crystalline, pure, odor-free water at your perfect temperature.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Testimonials Section (Masonry Bento Grid style) -->
+  <section class="py-20 bg-white border-b border-slate-200" id="testimonials">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Heading -->
+      <div class="mb-16 md:flex md:items-end md:justify-between">
+        <div class="max-w-2xl space-y-4">
+          <h2 class="text-[10px] font-extrabold text-blue-600 uppercase tracking-[0.2em]">Testimonials</h2>
+          <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tighter">Loved by adventurers and creators</p>
+        </div>
+        <p class="text-slate-500 mt-4 md:mt-0 max-w-sm md:text-right text-sm">See how our customers integrated smart, self-purified hydration into their busy routines.</p>
+      </div>
+
+      <!-- Testimonials Columns -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs">
+        
+        <!-- Testimonial 1 -->
+        <div class="bg-white p-8 border-b md:border-b-0 md:border-r border-slate-200 flex flex-col justify-between space-y-8 hover:bg-slate-50/40 transition-colors duration-250">
+          <div class="space-y-4">
+            <!-- Stars row -->
+            <div class="flex text-amber-500 gap-0.5 text-xs">
+              ★ ★ ★ ★ ★
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed font-medium" data-slot="testimonial-1-quote">
+              "Using the Aura Bottle on my travels has been a game-changer. I haven't bought a single plastic bottle in months, and the self-cleaning feature works incredibly well!"
+            </p>
+          </div>
+          <div class="flex items-center gap-3.5 pt-4 border-t border-slate-200/60">
+            <img class="w-9 h-9 rounded-full object-cover border border-slate-200" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&h=150&q=80" alt="Sarah Jenkins portrait">
+            <div>
+              <p class="font-bold text-slate-900 text-xs uppercase tracking-wide" data-slot="testimonial-1-name">Sarah Jenkins</p>
+              <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest" data-slot="testimonial-1-role">Travel Photographer</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="bg-white p-8 border-b md:border-b-0 md:border-r border-slate-200 flex flex-col justify-between space-y-8 hover:bg-slate-50/40 transition-colors duration-250">
+          <div class="space-y-4">
+            <!-- Stars row -->
+            <div class="flex text-amber-500 gap-0.5 text-xs">
+              ★ ★ ★ ★ ★
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed font-medium" data-slot="testimonial-2-quote">
+              "Minimalist design, superb insulation, and the peace of mind knowing my bottle doesn't smell funky after a long workout. Worth every penny."
+            </p>
+          </div>
+          <div class="flex items-center gap-3.5 pt-4 border-t border-slate-200/60">
+            <img class="w-9 h-9 rounded-full object-cover border border-slate-200" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80" alt="Marcus Thorne portrait">
+            <div>
+              <p class="font-bold text-slate-900 text-xs uppercase tracking-wide" data-slot="testimonial-2-name">Marcus Thorne</p>
+              <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest" data-slot="testimonial-2-role">Fitness Coach</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="bg-white p-8 flex flex-col justify-between space-y-8 hover:bg-slate-50/40 transition-colors duration-250">
+          <div class="space-y-4">
+            <!-- Stars row -->
+            <div class="flex text-amber-500 gap-0.5 text-xs">
+              ★ ★ ★ ★ ★
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed font-medium" data-slot="testimonial-3-quote">
+              "It's sleek, functional, and actually keeps me drinking more water. The charging cable is super premium and the battery life is outstanding."
+            </p>
+          </div>
+          <div class="flex items-center gap-3.5 pt-4 border-t border-slate-200/60">
+            <img class="w-9 h-9 rounded-full object-cover border border-slate-200" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&h=150&q=80" alt="Elena Rostova portrait">
+            <div>
+              <p class="font-bold text-slate-900 text-xs uppercase tracking-wide" data-slot="testimonial-3-name">Elena Rostova</p>
+              <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest" data-slot="testimonial-3-role">UX Designer</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>ion>
+
+  <!-- Pricing Offer Section (Single Ultra Premium Package Card) -->
+  <section class="py-20 bg-slate-50 relative overflow-hidden border-b border-slate-200" id="pricing">
+    
+    <!-- Geometric radial background dots pattern -->
+    <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+        <h2 class="text-[10px] font-extrabold text-blue-600 uppercase tracking-[0.2em]">Pricing</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tighter">Invest in pure hydration</p>
+        <p class="text-slate-500 text-sm sm:text-base">A one-time investment that saves you thousands of single-use bottles and ensures pristine drinking water for years.</p>
+      </div>
+
+      <!-- Single Highlight Purchase Box -->
+      <div class="max-w-3xl mx-auto">
+        <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs relative">
+          
+          <!-- Spotlight Badge -->
+          <div class="absolute top-0 right-0 bg-blue-600 text-white text-[9px] font-bold py-1.5 px-4 rounded-bl-lg uppercase tracking-wider">
+            Best Seller Offer
+          </div>
+ 
+          <div class="p-8 sm:p-12">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+              
+              <!-- Offer Details column (left) -->
+              <div class="md:col-span-7 space-y-6">
+                <div>
+                  <h3 class="text-lg font-bold text-slate-900 uppercase tracking-wide" data-slot="pricing-plan-name">Aura Bottle Collector Edition</h3>
+                  <p class="text-xs text-slate-500 mt-2" data-slot="pricing-desc">Get the ultimate smart bottle with premium travel sleeve, USB-C charger, and 1-year product warranty.</p>
+                </div>
+                
+                <!-- Inclusion Bullets -->
+                <ul class="space-y-3.5 text-xs text-slate-600 font-medium">
+                  <li class="flex items-center gap-3">
+                    <svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                    24h Cold / 12h Hot Smart Insulated Vessel
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                    Built-in UV-C Active Purification Cap
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                    Exclusive Premium Neoprene Protective Sleeve
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                    Magnetic Quick USB-C charging cable
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                    1-Year Extended Global Warranty
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Purchase CTA Column (right) -->
+              <div class="md:col-span-5 bg-slate-50 rounded-lg p-6 text-center border border-slate-200 flex flex-col justify-center items-center space-y-4">
+                <div class="space-y-1">
+                  <span class="text-5xl font-extrabold text-slate-900 tracking-tighter" data-slot="pricing-price">$79</span>
+                  <p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider" data-slot="pricing-period">One-time purchase</p>
+                </div>
+                
+                <a href="#checkout" class="w-full inline-flex items-center justify-center bg-slate-950 hover:bg-slate-900 text-white text-xs font-bold py-3.5 px-6 rounded-lg uppercase tracking-wider transition-colors duration-250">
+                  Secure Checkout
+                </a>
+                
+                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wide flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                  30-day money-back
+                </span>
+              </div>
+
+            </div>
+
+            <!-- Modern Payment Partners footer inside pricing -->
+            <div class="mt-8 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Guaranteed Safe & Secure Checkout:</span>
+              <div class="flex items-center gap-3 opacity-60">
+                <!-- Simulated premium gray badge designs directly inside SVG for professional fidelity -->
+                <svg class="h-6 w-auto" viewBox="0 0 36 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="36" height="22" rx="4" fill="#E2E8F0"/>
+                  <path d="M12 11c0-1.33.67-2.5 1.71-3.19A3.82 3.82 0 0012 7.5a3.83 3.83 0 00-3.83 3.83c0 1.29.63 2.42 1.6 3.12A3.82 3.82 0 0012 15a3.83 3.83 0 003.83-3.83c0-.44-.08-.85-.23-1.23A3.82 3.82 0 0012 11z" fill="#475569"/>
+                  <path d="M24 11a3.83 3.83 0 00-5.54-3.46A3.82 3.82 0 0020 11a3.83 3.83 0 01-3.83 3.83c-.44 0-.85-.08-1.23-.22A3.83 3.83 0 0018 15a3.83 3.83 0 006-4z" fill="#475569"/>
+                </svg>
+                <svg class="h-6 w-auto" viewBox="0 0 36 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="36" height="22" rx="4" fill="#E2E8F0"/>
+                  <path d="M10 7l3 8h2l3-8h-2l-2 5-2-5h-2z" fill="#475569"/>
+                  <rect x="22" y="7" width="4" height="8" rx="0.5" fill="#475569"/>
+                </svg>
+                <svg class="h-6 w-auto" viewBox="0 0 36 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="36" height="22" rx="4" fill="#E2E8F0"/>
+                  <path d="M8 8.5C8 7.67 8.67 7 9.5 7h17c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5h-17C8.67 15 8 14.33 8 13.5v-5z" stroke="#475569" stroke-width="1.5"/>
+                  <circle cx="13" cy="11" r="1.5" fill="#475569"/>
+                  <path d="M22 10.5h4M22 12h4" stroke="#475569" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ Accordion Section -->
+  <section class="py-20 bg-white border-b border-slate-200" id="faq">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title -->
+      <div class="text-center mb-16 space-y-4">
+        <h2 class="text-[10px] font-extrabold text-blue-600 uppercase tracking-[0.2em]">Support FAQ</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tighter">Frequently asked questions</p>
+      </div>
+
+      <!-- Detail Accordeon Blocks styling -->
+      <div class="space-y-4">
+        
+        <!-- FAQ 1 -->
+        <details class="group bg-white border border-slate-200 rounded-xl [&_summary::-webkit-details-marker]:hidden transition-colors duration-200">
+          <summary class="flex justify-between items-center p-5 cursor-pointer focus:outline-none">
+            <h3 class="text-xs sm:text-sm font-bold text-slate-900 uppercase tracking-wide" data-slot="faq-1-q">How does the self-cleaning technology work?</h3>
+            <span class="w-7 h-7 rounded-sm bg-slate-50 border border-slate-200 flex items-center justify-center shrink-0 group-open:rotate-180 transition-all duration-200">
+              <svg class="h-3 w-3 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 10l-7 7-7-7"/></svg>
+            </span>
+          </summary>
+          <div class="px-5 pb-5 pt-1 text-xs text-slate-500 leading-relaxed border-t border-slate-200">
+            <p data-slot="faq-1-a">The Aura Bottle uses built-in UV-C LED technology (280nm wavelength) inside the cap to destroy the DNA of odor-causing bacteria and bio-contaminants, purifying both the water and the inner bottle surfaces.</p>
+          </div>
+        </details>
+
+        <!-- FAQ 2 -->
+        <details class="group bg-white border border-slate-200 rounded-xl [&_summary::-webkit-details-marker]:hidden transition-colors duration-200">
+          <summary class="flex justify-between items-center p-5 cursor-pointer focus:outline-none">
+            <h3 class="text-xs sm:text-sm font-bold text-slate-900 uppercase tracking-wide" data-slot="faq-2-q">Does the bottle require filters?</h3>
+            <span class="w-7 h-7 rounded-sm bg-slate-50 border border-slate-200 flex items-center justify-center shrink-0 group-open:rotate-180 transition-all duration-200">
+              <svg class="h-3 w-3 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 10l-7 7-7-7"/></svg>
+            </span>
+          </summary>
+          <div class="px-5 pb-5 pt-1 text-xs text-slate-500 leading-relaxed border-t border-slate-200">
+            <p data-slot="faq-2-a">No filters are required! The UV-C purification cycle kills germs without physically filtering particulate matter, so it never needs expensive filter replacements.</p>
+          </div>
+        </details>
+
+        <!-- FAQ 3 -->
+        <details class="group bg-white border border-slate-200 rounded-xl [&_summary::-webkit-details-marker]:hidden transition-colors duration-200">
+          <summary class="flex justify-between items-center p-5 cursor-pointer focus:outline-none">
+            <h3 class="text-xs sm:text-sm font-bold text-slate-900 uppercase tracking-wide" data-slot="faq-3-q">How long does the battery last?</h3>
+            <span class="w-7 h-7 rounded-sm bg-slate-50 border border-slate-200 flex items-center justify-center shrink-0 group-open:rotate-180 transition-all duration-200">
+              <svg class="h-3 w-3 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 10l-7 7-7-7"/></svg>
+            </span>
+          </summary>
+          <div class="px-5 pb-5 pt-1 text-xs text-slate-500 leading-relaxed border-t border-slate-200">
+            <p data-slot="faq-3-a">A key benefit of Aura Bottle is its extreme efficiency. A single charge via the included magnetic USB-C cable will power the bottle for up to 30 days of normal self-cleaning cycles.</p>
+          </div>
+        </details>
+
+        <!-- FAQ 4 -->
+        <details class="group bg-white border border-slate-200 rounded-xl [&_summary::-webkit-details-marker]:hidden transition-colors duration-200">
+          <summary class="flex justify-between items-center p-5 cursor-pointer focus:outline-none">
+            <h3 class="text-xs sm:text-sm font-bold text-slate-900 uppercase tracking-wide" data-slot="faq-4-q">Is the bottle dishwasher safe?</h3>
+            <span class="w-7 h-7 rounded-sm bg-slate-50 border border-slate-200 flex items-center justify-center shrink-0 group-open:rotate-180 transition-all duration-200">
+              <svg class="h-3 w-3 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 10l-7 7-7-7"/></svg>
+            </span>
+          </summary>
+          <div class="px-5 pb-5 pt-1 text-xs text-slate-500 leading-relaxed border-t border-slate-200">
+            <p data-slot="faq-4-a">The bottle chamber itself is top-rack dishwasher safe. However, because the cap contains the UV-C LED battery and electronics, it should only be hand-washed under warm running water.</p>
+          </div>
+        </details>
+
+       <!-- Final Call-To-Action Banner -->
+  <section class="py-16 sm:py-24 bg-slate-950 text-slate-100 relative overflow-hidden" id="final-cta">
+    
+    <!-- Geometric radial background dots pattern -->
+    <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
+    
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
+      
+      <div class="space-y-4 max-w-2xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tighter leading-[1.1]" data-slot="final-cta-headline">
+          Ready to transform how you drink water?
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 max-w-md mx-auto" data-slot="final-cta-sub">
+          Get your Aura Bottle today with free shipping and a 30-day money-back guarantee.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="#pricing" class="w-full sm:w-auto inline-flex items-center justify-center bg-white hover:bg-slate-100 text-slate-950 font-bold text-xs py-3.5 px-8 rounded-lg uppercase tracking-wider transition-colors duration-250" data-slot="final-cta-button">
+          Get Aura Bottle Now
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Complete Premium Footer Area -->
+  <footer class="bg-white text-slate-500 py-16 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+        
+        <!-- Footer Column 1: Brand pitch & Socials -->
+        <div class="md:col-span-4 space-y-6">
+          <a href="#" class="flex items-center gap-2.5">
+            <div class="w-8 h-8 bg-slate-950 flex items-center justify-center text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+                <path d="M12 22a7 7 0 0 0 7-7c0-4.3-7-11-7-11S5 10.7 5 15a7 7 0 0 0 7 7z"/>
+              </svg>
+            </div>
+            <span class="font-bold text-base text-slate-900 tracking-tighter uppercase">AuraBottle</span>
+          </a>
+          <p class="text-xs text-slate-405 leading-relaxed max-w-sm">Design-led smart self-purifying systems built to optimize your environmental footprint and deliver crystalline clean hydration wherever adventure takes you.</p>
+          
+          <!-- Social Link Vectors -->
+          <div class="flex gap-4">
+            <a href="#" class="w-8 h-8 bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:text-blue-600 text-slate-650 rounded-lg flex items-center justify-center transition-colors duration-200" aria-label="Aura Bottle Instagram">
+              <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.05.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="#" class="w-8 h-8 bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:text-blue-600 text-slate-650 rounded-lg flex items-center justify-center transition-colors duration-200" aria-label="Aura Bottle Twitter">
+              <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Footer Links columns -->
+        <div class="md:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8">
+          
+          <div class="space-y-4">
+            <h4 class="text-xs font-bold text-slate-900 uppercase tracking-widest">Product</h4>
+            <ul class="space-y-2.5 text-xs">
+              <li><a href="#benefits" class="hover:text-blue-600 transition-colors">Pure Technology</a></li>
+              <li><a href="#pricing" class="hover:text-blue-600 transition-colors">Shop Collector Bottle</a></li>
+              <li><a href="#pricing" class="hover:text-blue-600 transition-colors">Replacement Caps</a></li>
+              <li><a href="#pricing" class="hover:text-blue-600 transition-colors">Accessories Store</a></li>
+            </ul>
+          </div>
+
+          <div class="space-y-4">
+            <h4 class="text-xs font-bold text-slate-900 uppercase tracking-widest">Company</h4>
+            <ul class="space-y-2.5 text-xs">
+              <li><a href="#" class="hover:text-blue-600 transition-colors">Our Purpose</a></li>
+              <li><a href="#" class="hover:text-blue-600 transition-colors">Sustainability Impact</a></li>
+              <li><a href="#" class="hover:text-blue-600 transition-colors">Retail Locations</a></li>
+              <li><a href="#" class="hover:text-blue-600 transition-colors">Press Inquiries</a></li>
+            </ul>
+          </div>
+
+          <div class="space-y-4 col-span-2 sm:col-span-1">
+            <h4 class="text-xs font-bold text-slate-900 uppercase tracking-widest">Secure Support</h4>
+            <ul class="space-y-2.5 text-xs">
+              <li><a href="#faq" class="hover:text-blue-600 transition-colors">Help Portal</a></li>
+              <li><a href="#" class="hover:text-blue-600 transition-colors">Track Shipment</a></li>
+              <li><a href="#" class="hover:text-blue-600 transition-colors">Returns & Refunds</a></li>
+              <li><a href="#" class="hover:text-blue-600 transition-colors">Register Warranty</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px]">
+        <span class="text-slate-400 font-bold uppercase tracking-wide">© 2026 AuraBottle Systems LLC. All rights reserved.</span>
+        <div class="flex gap-6 text-slate-400 font-bold uppercase tracking-wide">
+          <a href="#" class="hover:text-slate-650">Terms of Use</a>
+          <a href="#" class="hover:text-slate-650">Privacy Policy</a>
+          <a href="#" class="hover:text-slate-650">Anti-Spam</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Light client-side scripts inside single page landing layout -->
+  <script>
+    // 1. Mobile Menu Drawer Animation Trigger
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const dropdown = document.getElementById('mobile-dropdown');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    menuBtn.addEventListener('click', () => {
+      const isHidden = dropdown.classList.contains('hidden');
+      if (isHidden) {
+        dropdown.classList.remove('hidden');
+        hamburgerIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      } else {
+        dropdown.classList.add('hidden');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      }
+    });
+
+    // Close dropdown on navigation click
+    const menuLinks = dropdown.querySelectorAll('a');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        dropdown.classList.add('hidden');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      });
+    });
+
+    // 2. High Craftsman Interactive Product Color Selector
+    function switchColor(colorName) {
+      // List of supported color variant IDs
+      const colors = ['obsidian', 'teal', 'white', 'clay'];
+      
+      colors.forEach(col => {
+        const element = document.getElementById(`bottle-${col}`);
+        const button = document.getElementById(`btn-${col}`);
+        
+        if (col === colorName) {
+          // Display the selected bottle visual representation with transition
+          element.classList.remove('opacity-0', 'pointer-events-none', 'scale-95');
+          element.classList.add('opacity-100', 'scale-100');
+          // Highlight active color dot
+          button.classList.add('color-dot-active');
+        } else {
+          // Hide other variants
+          element.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+          element.classList.remove('opacity-100', 'scale-100');
+          // Remove highlight indicator
+          button.classList.remove('color-dot-active');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
